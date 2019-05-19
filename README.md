@@ -140,6 +140,30 @@ public class NoteSearch extends ListActivity  implements SearchView.OnQueryTextL
 # 扩展功能
 ## 我暂时实现了笔记排序+简单的UI美化功能
 ## 笔记排序
+### 笔记排序相对来说简单，只要把Cursor的排序参数变换下就可以了。在菜单文件list_options_menu.xml中添加
+```
+<item
+    android:id="@+id/menu_sort"
+    android:title="@string/menu_sort"
+    android:icon="@android:drawable/ic_menu_sort_by_size"
+    android:showAsAction="always" >
+    <menu>
+        <item
+            android:id="@+id/menu_sort1"
+            android:title="@string/menu_sort1"/>
+        <item
+            android:id="@+id/menu_sort2"
+            android:title="@string/menu_sort2"/>
+        <item
+            android:id="@+id/menu_sort3"
+            android:title="@string/menu_sort3"/>
+        </menu>
+    </item>
+```
+### 在NoteList菜单switch下添加case
+![](http://chuantu.xyz/t6/702/1558260857x1709417261.png)
+### 因为排序会多次使用到cursor，adapter，所以将adapter,cursor,dataColumns,viewIDs定义在函数外类内
+![](http://chuantu.xyz/t6/702/1558260923x1954578459.png)
 
 ## UI美化
 
