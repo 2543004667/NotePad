@@ -26,6 +26,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:paddingLeft="5dip"
-        />```
+        />
 
 
