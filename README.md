@@ -28,6 +28,6 @@
         android:paddingLeft="5dip"
         />
         
-        ![](http://chuantu.xyz/t6/702/1558257684x1709417261.jpg)
+  ![](http://chuantu.xyz/t6/702/1558257684x1709417261.jpg)
 
 
