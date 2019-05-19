@@ -164,8 +164,13 @@ public class NoteSearch extends ListActivity  implements SearchView.OnQueryTextL
 ![](http://chuantu.xyz/t6/702/1558260857x1709417261.png)
 ### 因为排序会多次使用到cursor，adapter，所以将adapter,cursor,dataColumns,viewIDs定义在函数外类内
 ![](http://chuantu.xyz/t6/702/1558260923x1954578459.png)
-
+### 最终效果图（颜色排序暂未实现）
+![](http://chuantu.xyz/t6/702/1558260923x1954578459.png)
 ## UI美化
+### UI美化主要是让NoteList和NoteSearch每条笔记都有背景色，并且能保存。要做到保存颜色的数据，最直接的办法就是在数据库中添加一个颜色的字段，在这之前在NotePad契约类中添加
+![](http://chuantu.xyz/t6/702/1558261207x1954578459.png)
+### 
+![](http://chuantu.xyz/t6/702/1558261257x1954578459.png)
 
 
 
