@@ -35,4 +35,116 @@
 ### 下面是效果图
 ![](http://chuantu.xyz/t6/702/1558259205x1954578459.png)
 
+## 添加笔记查询功能（根据标题查询）
+### 找到菜单的xml文件，list_options_menu.xml，添加一个搜索的item，搜索图标用安卓自带的图标，设为总是显示
+![](http://chuantu.xyz/t6/702/1558259467x1954578459.png)
+### 在NoteList中找到onOptionsItemSelected方法，在switch中添加搜索的case语句
+![](http://chuantu.xyz/t6/702/1558259601x1954578459.png)
+### 先布局搜索页面，在layout中新建布局文件note_search_list.xml
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:queryHint="输入搜索内容..."
+        android:layout_alignParentTop="true">
+    </SearchView>
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+</LinearLayout>
+```
+### 要动态地显示搜索结果，就要对SearchView文本变化设置监听，NoteSearch除了要继承ListView外还要实现SearchView.OnQueryTextListener接口
+```
+public class NoteSearch extends ListActivity  implements SearchView.OnQueryTextListener {
+    private static final String[] PROJECTION = new String[] {
+            NotePad.Notes._ID, // 0
+            NotePad.Notes.COLUMN_NAME_TITLE, // 1
+            //扩展 显示时间 颜色
+            NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE, // 2
+            NotePad.Notes.COLUMN_NAME_BACK_COLOR
+    };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.note_search_list);
+        Intent intent = getIntent();
+        if (intent.getData() == null) {
+            intent.setData(NotePad.Notes.CONTENT_URI);
+        }
+        SearchView searchview = (SearchView)findViewById(R.id.search_view);
+        //为查询文本框注册监听器
+        searchview.setOnQueryTextListener(NoteSearch.this);  
+    }
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String selection = NotePad.Notes.COLUMN_NAME_TITLE + " Like ? ";
+        String[] selectionArgs = { "%"+newText+"%" };
+        Cursor cursor = managedQuery(
+                getIntent().getData(),            // Use the default content URI for the provider.
+                PROJECTION,                       // Return the note ID and title for each note. and modifcation date
+                selection,                        // 条件左边
+                selectionArgs,                    // 条件右边
+                NotePad.Notes.DEFAULT_SORT_ORDER  // Use the default sort order.
+        );
+        String[] dataColumns = { NotePad.Notes.COLUMN_NAME_TITLE ,  NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE };
+        int[] viewIDs = { android.R.id.text1 , R.id.text1_time };
+        MyCursorAdapter adapter = new MyCursorAdapter(
+                this,
+                R.layout.noteslist_item,
+                cursor,
+                dataColumns,
+                viewIDs
+        );
+        setListAdapter(adapter);
+        return true;
+    }
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // Constructs a new URI from the incoming URI and the row ID
+        Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
+        // Gets the action from the incoming Intent
+        String action = getIntent().getAction();
+        // Handles requests for note data
+        if (Intent.ACTION_PICK.equals(action) || Intent.ACTION_GET_CONTENT.equals(action)) {
+            // Sets the result to return to the component that called this Activity. The
+            // result contains the new URI
+            setResult(RESULT_OK, new Intent().setData(uri));
+        } else {
+            // Sends out an Intent to start an Activity that can handle ACTION_EDIT. The
+            // Intent's data is the note ID URI. The effect is to call NoteEdit.
+            startActivity(new Intent(Intent.ACTION_EDIT, uri));
+        }
+    }
+}
+```
+### 最后要在AndroidManifest.xml注册NoteSearch
+![](http://chuantu.xyz/t6/702/1558260485x1954578459.png)
+### 最终效果图
+![](http://chuantu.xyz/t6/702/1558260585x1709417261.png)
+![](http://chuantu.xyz/t6/702/1558260606x1709417261.png)
+
+# 扩展功能
+## 我暂时实现了笔记排序+简单的UI美化功能
+## 笔记排序
+
+## UI美化
+
+
+
+
+
 
