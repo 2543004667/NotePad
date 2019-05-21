@@ -29,7 +29,7 @@
         />
 ```
 ### 要将时间显示，首先要在PROJECTION中定义显示的时间，原应用有两种时间，我选择修改时间作为显示的时间。        
-![](http://chuantu.xyz/t6/702/1558257684x1709417261.jpg)
+![](https://i.loli.net/2019/05/21/5ce410983940153814.jpg)
 ### Cursor不变，在dataColumns，viewIDs中补充时间部分：
 ![](http://chuantu.xyz/t6/702/1558259179x1954578459.png)
 ### 下面是效果图
