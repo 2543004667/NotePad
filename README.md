@@ -161,18 +161,19 @@ public class NoteSearch extends ListActivity  implements SearchView.OnQueryTextL
     </item>
 ```
 ### 在NoteList菜单switch下添加case
-![](http://chuantu.xyz/t6/702/1558260857x1709417261.png)
+![](https://i.loli.net/2019/05/21/5ce413b29671a33057.png)
+![](https://i.loli.net/2019/05/21/5ce413e8f2d4290533.png)
 ### 因为排序会多次使用到cursor，adapter，所以将adapter,cursor,dataColumns,viewIDs定义在函数外类内
-![](http://chuantu.xyz/t6/702/1558260923x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce4143fc38c217342.png)
 ### 最终效果图（颜色排序暂未实现）
-![](http://chuantu.xyz/t6/702/1558260923x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce417637e63983884.png)
 ## UI美化
-### UI美化主要是让NoteList和NoteSearch每条笔记都有背景色，并且能保存。要做到保存颜色的数据，最直接的办法就是在数据库中添加一个颜色的字段，在这之前在NotePad契约类中添加
+### UI美化主要是让NoteList和NoteSearch每条笔记都有背景色，并且能保存要做到保存颜色的数据，最直接的办法就是在数据库中添加一个颜色的字段，在这之前在NotePad契约类中添加
 ![](http://chuantu.xyz/t6/702/1558261207x1954578459.png)
 ### 创建数据库表地方添加颜色的字段
-![](http://chuantu.xyz/t6/702/1558261257x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce416569bb3c13163.png)
 ### 最终效果图
-![](http://chuantu.xyz/t6/702/1558261472x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce415f2685d236098.png)
 
 
 
