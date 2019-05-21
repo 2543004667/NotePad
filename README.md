@@ -31,15 +31,15 @@
 ### 要将时间显示，首先要在PROJECTION中定义显示的时间，原应用有两种时间，我选择修改时间作为显示的时间。        
 ![](https://i.loli.net/2019/05/21/5ce410983940153814.jpg)
 ### Cursor不变，在dataColumns，viewIDs中补充时间部分：
-![](http://chuantu.xyz/t6/702/1558259179x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce41116a5ae690789.png)
 ### 下面是效果图
-![](http://chuantu.xyz/t6/702/1558259205x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce41163369bc53098.png)
 
 ## 添加笔记查询功能（根据标题查询）
 ### 找到菜单的xml文件，list_options_menu.xml，添加一个搜索的item，搜索图标用安卓自带的图标，设为总是显示
-![](http://chuantu.xyz/t6/702/1558259467x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce4122162e3681233.png)
 ### 在NoteList中找到onOptionsItemSelected方法，在switch中添加搜索的case语句
-![](http://chuantu.xyz/t6/702/1558259601x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce4127f409f364748.png)
 ### 先布局搜索页面，在layout中新建布局文件note_search_list.xml
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -132,10 +132,10 @@ public class NoteSearch extends ListActivity  implements SearchView.OnQueryTextL
 }
 ```
 ### 最后要在AndroidManifest.xml注册NoteSearch
-![](http://chuantu.xyz/t6/702/1558260485x1954578459.png)
+![](https://i.loli.net/2019/05/21/5ce412c53461349494.png)
 ### 最终效果图
-![](http://chuantu.xyz/t6/702/1558260585x1709417261.png)
-![](http://chuantu.xyz/t6/702/1558260606x1709417261.png)
+![](https://i.loli.net/2019/05/21/5ce412faa127681963.png)
+![](https://i.loli.net/2019/05/21/5ce41316b621820571.png)
 
 # 扩展功能
 ## 我暂时实现了笔记排序+简单的UI美化功能
